@@ -4,14 +4,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="signchart",  # Replace with your desired package name
-    version="0.1.10",
+    name="groupify",
+    version="0.1.1",
     author="René Alexander Ask",
     author_email="rene.ask@icloud.com",
-    description="Automatically generates sign charts for polynomial functions.",
+    description="Automatically generates random groups from a class list.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/reneaas/signchart",
+    url="https://github.com/reneaas/groupify",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -21,7 +21,7 @@ setuptools.setup(
     install_requires=[
         "numpy",
         "matplotlib",
-        "sympy",
+        "seaborn",
     ],
     python_requires=">=3.7",
 )

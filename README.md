@@ -1,104 +1,75 @@
-# `signchart`
-`signchart` is a Python package for plotting sign charts for polynomial functions. It is designed to be simple to use to generate beautiful sign charts for polynomial functions.
+# `groupify`
+`groupify` is a Python package for automatically creating random groups in the classroom from a classlist. 
+
+> NOTE: there is currently no way to ensure that Newton and Leibniz are not in the same group. They must cooperate if necessary.
 
 ## Basic examples
 
 ### Example 1
 
 ```python
-import signchart
+import groupify
 
-f = "(x**2 + 1)**2 * (x - 1)**2 * (x + 1)"
+classlist = "sample_class.txt"
 
-signchart.make_sign_chart(f=f, include_factors=True)
-signchart.savefig(
-    dirname="dirname",
-    fname="fname",
+groupify.create(
+    classlist=classlist,
+    group_size=4,
 )
 
-signchart.show()
+groupify.savefig(dirname="../figures/", fname="example_1.svg")
+
+groupify.show()
+
 ```
 
-This will generate the following sign chart:
+This will generate the following groups (randomly):
 
-![sign chart](https://raw.githubusercontent.com/reneaas/signchart/refs/heads/main/examples/figures/example_1.svg)
+![example 1](https://raw.githubusercontent.com/reneaas/groupify/refs/heads/main/examples/figures/example_1.svg)
 
 
 ### Example 2
 
 ```python
-import signchart
+import groupify
 
-f = "x**2 - x - 6"
+classlist = "sample_class.txt"
 
-signchart.make_sign_chart(
-    f=f,
-    include_factors=True,
-    color=True,  # Includes colored lines.
-    fn_name="g(x)",  # Names the function g(x)
+groupify.create(
+    classlist=classlist,
+    group_size=3,
 )
 
-signchart.savefig(
-    dirname="figures",
-    fname="example_2.svg",
-)
+groupify.savefig(dirname="../figures/", fname="example_2.svg")
 
-signchart.show()
+groupify.show()
 ```
 
-This will generate the following sign chart:
+This will generate the following groups (randomly):
 
-![sign chart](https://raw.githubusercontent.com/reneaas/signchart/refs/heads/main/examples/figures/example_2.svg)
+![example 2](https://raw.githubusercontent.com/reneaas/groupify/refs/heads/main/examples/figures/example_2.svg)
+
+
 
 ### Example 3
 
 ```python
-import signchart
+import groupify
 
-f = "-2 * x**2 + 2 * x + 12"
+classlist = "sample_class.txt"
 
-signchart.make_sign_chart(
-    f=f,
-    include_factors=True,
-    color=True,  # Includes colored lines.
-    fn_name="h(x)",  # Names the function h(x)
+groupify.create(
+    classlist=classlist,
+    group_size=2,
 )
 
-signchart.savefig(
-    dirname="figures",
-    fname="example_3.svg",
-)
+groupify.savefig(dirname="../figures/", fname="example_3.svg")
 
-signchart.show()
+groupify.show()
+
 ```
 
-This will generate the following sign chart:
+This will generate the following groups (randomly):
 
-![sign chart](https://raw.githubusercontent.com/reneaas/signchart/refs/heads/main/examples/figures/example_3.svg)
+![example 3](https://raw.githubusercontent.com/reneaas/groupify/refs/heads/main/examples/figures/example_3.svg)
 
-
-### Example 4
-
-```python
-import signchart
-
-f = "-3 * (t - 1) * (t + 3)"  # Uses 't' as variable in place of 'x'
-
-signchart.make_sign_chart(
-    f=f,
-    include_factors=False,  # excludes linear factors in the polynomial
-    color=False,  # sign lines are black (uncolored)
-    fn_name="x(t)",  # Names the function x(t)
-)
-
-signchart.savefig(
-    dirname="figures",
-    fname="example_4.svg",
-)
-
-signchart.show()
-```
-
-This will generate the following sign chart:
-
-![sign chart](https://raw.githubusercontent.com/reneaas/signchart/refs/heads/main/examples/figures/example_4.svg)
