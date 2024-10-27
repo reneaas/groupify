@@ -4,15 +4,17 @@ import matplotlib.pyplot as plt
 from math import ceil
 import seaborn as sns
 
+from typing import List
 
-def read_class_list(filename: str) -> list[str]:
+
+def read_class_list(filename):
     """Reads a class list from a file and returns a list of names
 
     Args:
         filename (str): Filename of class list
 
     Returns:
-        list[str]: List of names
+        List[str]: List of names
 
     """
     class_list = []
@@ -22,15 +24,15 @@ def read_class_list(filename: str) -> list[str]:
     return class_list
 
 
-def remove_names(class_list: list[str], names: list[str]) -> list[str]:
+def remove_names(class_list, names):
     """Removes names from a class list
 
     Args:
-        class_list (list[str]): List of names
-        names (list[str]): Names to remove from class list
+        class_list (List[str]): List of names
+        names (List[str]): Names to remove from class list
 
     Returns:
-        list[str]: List of names with names removed
+        List[str]: List of names with names removed
     """
     for name in names:
         try:
@@ -40,16 +42,16 @@ def remove_names(class_list: list[str], names: list[str]) -> list[str]:
     return class_list
 
 
-def generate_random_groups(class_list: list[str], group_size: int) -> list[list[str]]:
+def generate_random_groups(class_list, group_size):
     """Generates random groups from a class list
 
 
     Args:
-        class_list (list[str]): List of names
+        class_list (List[str]): List of names
         group_size (int): Size of each group
 
     Returns:
-        list[list[str]]: List of groups
+        list[List[str]]: List of groups
 
     """
 
@@ -71,7 +73,24 @@ def generate_random_groups(class_list: list[str], group_size: int) -> list[list[
     return groups
 
 
-def create(classlist, remove_names: list = None, group_size: int = None):
+def create(classlist, absent=None, group_size=4):
+    """Creates a set of random groups with a specific group size.
+
+    Args:
+        classlist (str):
+            .txt file with classlist.
+        absent (list(str)):
+            list of absent participants to remove from the classlist
+        group_size (int):
+            Number of students per group. Default: `4`.
+            Must be a number between 1 and 4 (inclusive).
+
+    Returns:
+        fig (matplotlib.pyplot.Figure)
+        ax (maplotlib.pyplot.Axes)
+
+
+    """
     if group_size is not None:
         if not (0 < group_size <= 4):
             raise ValueError(
@@ -79,19 +98,16 @@ def create(classlist, remove_names: list = None, group_size: int = None):
             )
 
     class_list = read_class_list(filename=classlist)
-    if remove_names is not None:
-        class_list = remove_names(remove_names)
+    if absent is not None:
+        class_list = remove_names(class_list, absent)
 
-    if group_size is not None:
-        groups = generate_random_groups(class_list, group_size)
-    else:
-        groups = generate_random_groups(class_list, len(class_list) // num_groups)
+    groups = generate_random_groups(class_list, group_size)
 
     fig, ax = visualize_groups(groups)
     return fig, ax
 
 
-def visualize_groups(groups: list[list[str]]) -> None:
+def visualize_groups(groups):
     # Define the size of the figure
     fig, ax = plt.subplots(figsize=(14, 8))
 
