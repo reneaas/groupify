@@ -47,7 +47,12 @@ import groupify
 
 classlist = "sample_class.txt"
 
-absent = ["Einstein", "Cantor", "Hilbert"]
+absent = [
+    "Einstein",  # Busy dreaming about light
+    "Feynman",  # Busy pick-locking government secrets
+    "Hilbert",  # Busy trying to one-up Einstein on GR
+    "Schrödinger",  # Uncertain if he's here or not – we'll exlude him to be sure
+]
 
 groupify.create(
     classlist=classlist,
@@ -58,7 +63,6 @@ groupify.create(
 groupify.savefig(dirname="../figures/", fname="example_2.svg")
 
 groupify.show()
-
 ```
 
 This will generate the following groups (randomly):
