@@ -48,7 +48,7 @@ def main():
 
     groups = generate_random_groups(names, args.size)
 
-    group_table = [[f"Group {i}", ", ".join(g)] for i, g in enumerate(groups, 1)]
+    group_table = [[f"{i}", ", ".join(g)] for i, g in enumerate(groups, 1)]
     print(tabulate(group_table, headers=["Group", "Members"], tablefmt="grid"))
 
     if args.show:
