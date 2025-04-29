@@ -32,5 +32,6 @@ def main():
     for i, g in enumerate(groups, 1):
         print(f"Group {i}: {', '.join(g)}")
 
+    print(args.show)
     if args.show:
         show()
