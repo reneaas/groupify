@@ -144,7 +144,6 @@ def visualize_groups(groups):
             cell_size_y,
             fill=True,
             color=colors[i],
-            edgecolor="black",
             lw=2,
             alpha=0.3,
         )
