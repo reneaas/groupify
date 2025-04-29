@@ -165,7 +165,15 @@ def visualize_groups(groups):
         )
 
         # Positions of names in the sub-rectangles of the rectangle
-        if len(group) > 2:
+        if len(group) > 4:
+            raise ValueError(
+                f"Group size {len(group)} is too large. Must be at most 4."
+            )
+        elif len(group) == 0:
+            raise ValueError(
+                f"Group size {len(group)} is too small. Must be at least 1."
+            )
+        elif len(group) > 2:
             positions = [(0.25, 0.25), (0.75, 0.25), (0.25, 0.75), (0.75, 0.75)]
         else:
             positions = [(0.25, 0.5), (0.75, 0.5)]
