@@ -1,5 +1,10 @@
 import argparse
-from .make_random_groups import read_class_list, generate_random_groups, show
+from .make_random_groups import (
+    read_class_list,
+    generate_random_groups,
+    visualize_groups,
+    show,
+)
 
 
 def main():
@@ -32,6 +37,6 @@ def main():
     for i, g in enumerate(groups, 1):
         print(f"Group {i}: {', '.join(g)}")
 
-    print(args.show)
     if args.show:
+        fig, ax = visualize_groups(groups)
         show()
