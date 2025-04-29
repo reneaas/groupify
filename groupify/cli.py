@@ -1,4 +1,5 @@
 import argparse
+from tabulate import tabulate
 from .make_random_groups import (
     read_class_list,
     generate_random_groups,
@@ -47,8 +48,8 @@ def main():
 
     groups = generate_random_groups(names, args.size)
 
-    for i, g in enumerate(groups, 1):
-        print(f"Group {i}: {', '.join(g)}")
+    group_table = [[f"Group {i}", ", ".join(g)] for i, g in enumerate(groups, 1)]
+    print(tabulate(group_table, headers=["Group", "Members"], tablefmt="grid"))
 
     if args.show:
         fig, ax = visualize_groups(groups)
