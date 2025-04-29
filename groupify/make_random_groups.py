@@ -165,7 +165,10 @@ def visualize_groups(groups):
         )
 
         # Positions of names in the sub-rectangles of the rectangle
-        positions = [(0.25, 0.25), (0.75, 0.25), (0.25, 0.75), (0.75, 0.75)]
+        if group_size > 2:
+            positions = [(0.25, 0.25), (0.75, 0.25), (0.25, 0.75), (0.75, 0.75)]
+        else:
+            positions = [(0.25, 0.5), (0.75, 0.5)]
 
         # Add the individuals to the rectangle
         for j, individual in enumerate(group):
