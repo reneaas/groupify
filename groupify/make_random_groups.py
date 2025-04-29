@@ -34,6 +34,7 @@ def remove_names(class_list, names):
     Returns:
         List[str]: List of names with names removed
     """
+
     for name in names:
         try:
             class_list.remove(name)
@@ -54,6 +55,7 @@ def generate_random_groups(class_list, group_size):
         list[List[str]]: List of groups
 
     """
+    random.seed()
 
     random.shuffle(class_list)
     num_groups = len(class_list) // group_size
@@ -77,8 +79,8 @@ def create(classlist, absent=None, group_size=4):
     """Creates a set of random groups with a specific group size.
 
     Args:
-        classlist (str):
-            .txt file with classlist.
+        classlist (str or list):
+            .txt file with classlist or a list with names.
         absent (list(str)):
             list of absent participants to remove from the classlist
         group_size (int):
@@ -97,7 +99,9 @@ def create(classlist, absent=None, group_size=4):
                 f"Group size {group_size} must be at least 1 and maximally 4."
             )
 
-    class_list = read_class_list(filename=classlist)
+    if isinstance(classlist, str):
+        class_list = read_class_list(filename=classlist)
+
     if absent is not None:
         class_list = remove_names(class_list, absent)
 
