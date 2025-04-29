@@ -13,23 +13,16 @@ def main():
         "-sz", "--size", type=int, default=4, help="group size (default 4)"
     )
 
-    def str2bool(v):
-        if isinstance(v, bool):
-            return v
-        if v.lower() in ("yes", "true", "t", "y", "1"):
-            return True
-        if v.lower() in ("no", "false", "f", "n", "0"):
-            return False
-        raise argparse.ArgumentTypeError("Boolean value expected.")
-
     parser.add_argument(
         "--show",
-        type=str2bool,
-        nargs="?",
-        const=True,
-        default=True,
-        help="Show the plot (default: true). Pass --show false to disable.",
+        dest="show",
+        action="store_true",
+        help="Display the plot (this is the default)",
     )
+    parser.add_argument(
+        "--no-show", dest="show", action="store_false", help="Do not display the plot"
+    )
+    parser.set_defaults(show=True)
 
     args = parser.parse_args()
 
