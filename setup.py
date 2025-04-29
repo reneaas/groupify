@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="groupify",
-    version="0.1.12",
+    version="0.1.13",
     author="René Alexander Ask",
     author_email="rene.ask@icloud.com",
     description="Automatically generates random groups from a class list.",

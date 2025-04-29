@@ -162,7 +162,7 @@ def visualize_groups(groups):
             ha="center",
             va="center",
             fontsize=20,
-            bbox=dict(facecolor="white", alpha=0.5),
+            bbox=dict(facecolor="white", alpha=0.5, boxstyle="round,pad=0.5"),
         )
 
         # Positions of names in the sub-rectangles of the rectangle
