@@ -4,6 +4,7 @@ from .make_random_groups import (
     generate_random_groups,
     visualize_groups,
     show,
+    remove_names,
 )
 
 
@@ -16,6 +17,14 @@ def main():
     )
     parser.add_argument(
         "-sz", "--size", type=int, default=4, help="group size (default 4)"
+    )
+
+    parser.add_argument(
+        "--names",
+        metavar="N",
+        type=str,
+        nargs="+",
+        help="Names to remove from class list. Separate names with spaces. Such as: Mary Christian Gunnar",
     )
 
     parser.add_argument(
@@ -32,6 +41,10 @@ def main():
     args = parser.parse_args()
 
     names = read_class_list(args.file)
+
+    if args.names:
+        names = remove_names(names, args.names)
+
     groups = generate_random_groups(names, args.size)
 
     for i, g in enumerate(groups, 1):
