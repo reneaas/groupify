@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="groupify",
-    version="0.1.8",
+    version="0.1.9",
     author="René Alexander Ask",
     author_email="rene.ask@icloud.com",
     description="Automatically generates random groups from a class list.",
@@ -23,5 +23,10 @@ setuptools.setup(
         "matplotlib",
         "seaborn",
     ],
+    entry_points={
+        "console_scripts": [
+            "groupify=groupify.cli:main",
+        ],
+    },
     python_requires=">=3.7",
 )
